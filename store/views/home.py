@@ -6,6 +6,8 @@ from django.views import View
 
 # Create your views here.
 class Index(View):
+    fjavfhjf
+
 
     def post(self , request):
         product = request.POST.get('product')
