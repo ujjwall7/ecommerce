@@ -1,0 +1,114 @@
+{% comment %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=, initial-scale=1.0">
+	<title>Document</title>
+
+</head>
+
+<body>
+	{% if profile %}
+	<div class="fashion">
+		<h2>{{profile.first_name}}</h2>
+		<h2>{{profile.last_name}}</h2>
+		<h2>{{profile.phone}}</h2>
+		<h2>{{profile.email}}</h2>
+		<h2>{{profile.password}}</h2>
+		<img src="{{ profile.image.url }}" , height="250px">
+
+	</div>
+	{% endif %}
+</body>
+
+</html> {% endcomment %}
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Form-v8 by Colorlib</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/sourcesanspro-font.css' %}">
+	<!-- Main Style Css -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body class="form-v8">
+
+
+	{% if profile %}
+	<div class="page-content">
+		<div class="form-v8-content">
+			<div class="form-left">
+
+
+				<img src="{{ profile.image.url }}" , height="584px" width="469px">
+
+
+
+			</div>
+
+			<div class="form-right">
+				<div class="tab">
+					<div class="tab-inner">
+						<button class="tablinks">{{profile.first_name}}
+							details
+						</button>
+					</div>
+				</div>
+				<form class="form-detail" action="#" method="post">
+					<div class="tabcontent" id="sign-up">
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input>
+								<span class="label">{{profile.first_name}} {{profile.last_name}}</span>
+								<span class="border"></span>
+							</label>
+						</div><br>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input>
+								<span class="label">{{profile.email}}</span>
+								<span class="border"></span>
+							</label>
+						</div><br>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input>
+								<span class="label">{{profile.phone}}</span>
+								<span class="border"></span>
+							</label>
+						</div><br>
+
+						
+						<div class="form-row-last">
+							<form action="{% url 'delete' id=profile.id %}" method="post">
+								{% csrf_token %}
+								<input type="submit" name="delete" class="register" value="DELETE ACCOUNT">
+							</form>	
+						</div>
+
+
+
+						{% endif %}
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
